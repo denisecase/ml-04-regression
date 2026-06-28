@@ -27,12 +27,15 @@ license: MIT
 
 abstract: >
   Machine learning project.
-  Learn to characterize machine learning problems.
+  Learn to build and evaluate regression models,
+  interpret metrics such as MAE, RMSE, and R-squared,
+  and compare models to choose the better one.
 
 keywords:
   - data analytics
   - notebooks
   - machine learning
+  - regression
   - computer-science-education
   - data-analytics-education
   - professional-python
@@ -44,6 +47,7 @@ keywords:
   - python
   - jupyter
   - pandas
+  - scikit-learn
   - git
   - github
   - open-source
