@@ -3,78 +3,54 @@
 Use this page to record terms and ideas that help you understand
 professional analytics projects.
 
-This project is not only about EDA. It is also a chance to practice
-how professional projects are organized, reused, documented, and verified.
+This project covers regression: building and evaluating models
+that predict a continuous numeric value from input features.
 
 Pro-tip: Expand the VS Code **Outline** view (below the navigator on the right)
 to see this file organization at-a-glance.
 
-## Project Organization
+## Regression Evaluation
 
-### source code
+### residual
 
-Source code are instructions that tell the computer what to do.
-In a Python project, source code lives in files ending with `.py`.
+A residual is the difference between a model's predicted value and the true value.
+Examining residuals reveals where a model is consistently over- or under-predicting.
 
-### module
+### MAE (Mean Absolute Error)
 
-A module is one Python file that contains related code.
-A module may include constants, functions, imports, and a `main()` function.
-A project may have many modules working together.
-Being able to organize project code into modules, and reusable functions is a valuable skill.
+MAE is the average of the absolute differences between predicted and true values.
+It is easy to interpret: an MAE of 5 means predictions are off by 5 units on average.
 
-### package
+### RMSE (Root Mean Squared Error)
 
-A package is a folder of related Python modules.
-A package usually includes an `__init__.py` file
-(it can be empty or just a docstring comment).
-The init file allows code in that folder to be
-imported and reused across a project.
+RMSE is the square root of the average squared differences between predicted and true values.
+It penalizes large errors more heavily than MAE.
+A lower RMSE means predictions are closer to the true values.
 
-### notebook
+### R-squared (R²)
 
-A notebook is an interactive file used to combine
-code, output, notes, and narrative.
-Notebooks are useful for exploration, experiments,
-and explaining analysis step by step.
+R-squared measures how much of the variance in the target the model explains.
+A value of 1.0 means perfect predictions; a value of 0.0 means the model
+does no better than predicting the mean every time.
+Negative values are possible when the model performs worse than the mean.
 
-## Reuse and Workflow
+### baseline model
 
-### reusable function
+A baseline model is the simplest possible prediction strategy,
+such as always predicting the mean of the training target.
+A good model should outperform the baseline; if it does not,
+the features or approach need revisiting.
 
-A reusable function is a named block of code that performs
-one clear task and can be called more than once.
-Good functions make projects easier to read, test, debug, and modify.
+## Regression Models
 
-### dependency
+### linear regression
 
-A dependency is an external package or tool that a project
-needs in order to run.
-Dependencies are listed in `pyproject.toml`
-and the environment can be easily recreated using `uv`.
+Linear regression fits a straight line (or hyperplane) through the data
+to predict a continuous target.
+It is fast and interpretable but assumes a linear relationship between features and target.
 
-### workflow
+### decision tree regressor
 
-A workflow is an ordered process for completing work.
-In a project, a workflow might include running code,
-checking results, making changes, testing again,
-and saving progress with Git.
-
-## Data and Outputs
-
-### raw data
-
-Raw data is the original input data used by the project.
-It should usually be kept unchanged so the analysis
-can be repeated from the original source.
-
-### processed data
-
-Processed data is data that has been
-cleaned, filtered, transformed, summarized, or prepared for later use.
-
-### artifact
-
-An artifact is a file created by running a project.
-Examples include logs, charts, reports, exported data files,
-generated databases, and documentation output.
+A decision tree regressor predicts a continuous value by partitioning
+feature space into regions and predicting the mean of each region.
+It can capture nonlinear relationships but may overfit.
